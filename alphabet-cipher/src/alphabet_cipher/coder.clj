@@ -32,8 +32,15 @@
                   (generate-key-string keyword (count message)) 
                   message)))
 
+;; Decode a single char m using k as encoding key
+(defn decode-char [k m]
+  (get letters (.indexOf (generate-string-for-char k) (str m))))
+
+;; Encode a string using keyword
 (defn decode [keyword message]
-  "decodeme")
+  (apply str (map decode-char
+                   (generate-key-string keyword (count message))
+                   message)))
 
 (defn decipher [cipher message]
   "decypherme")
