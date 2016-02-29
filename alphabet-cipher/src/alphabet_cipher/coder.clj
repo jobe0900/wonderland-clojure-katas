@@ -42,6 +42,22 @@
                    (generate-key-string keyword (count message))
                    message)))
 
+;; Find keyword char from a single char m with the cipher c
+(defn decipher-char [c m]
+  (get letters (.indexOf (generate-string-for-char m) (str c))))
+
+;; Find the keyword that is repeated to make the keyword string.
+(defn extract-keyword [kw-string]
+  (loop [i 1]
+    (if (< i (count kw-string))
+      (let [sub (subs kw-string 0 i)]
+        (if (= kw-string (apply str (take (count kw-string) (cycle sub))))
+          sub
+          (recur (inc i))))
+      nil)))
+
+;; Find the ccipher keyword from the encrypted and original message.
 (defn decipher [cipher message]
-  "decypherme")
+  (let [kw-string (apply str (map decipher-char cipher message))]
+    (extract-keyword kw-string)))
 
