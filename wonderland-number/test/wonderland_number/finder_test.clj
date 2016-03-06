@@ -16,3 +16,14 @@
       (is (hasAllTheSameDigits? wondernum (* 4 wondernum)))
       (is (hasAllTheSameDigits? wondernum (* 5 wondernum)))
       (is (hasAllTheSameDigits? wondernum (* 6 wondernum))))))
+
+(deftest test-is-six-digits
+  (testing "Helper function to decide if number is six digits"
+    (is (= true (is-six-digits? 123456)))
+    (is (= false (is-six-digits? 12345)))
+    (is (= false (is-six-digits? 1234567)))))
+
+(deftest test-has-same-digits?
+  (testing "Helper function to decide if the set of digit are the same"
+    (is (= true (has-same-digits? 123456 345612)))
+    (is (= false (has-same-digits? 123456 234567)))))
