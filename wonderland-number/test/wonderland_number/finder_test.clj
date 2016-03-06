@@ -27,3 +27,13 @@
   (testing "Helper function to decide if the set of digit are the same"
     (is (= true (has-same-digits? 123456 345612)))
     (is (= false (has-same-digits? 123456 234567)))))
+
+;; Day 5
+(deftest test-cube
+  (testing "Cube of number"
+    (is (= 8 (cube 2)))
+    (is (= 27 (cube 3)))))
+
+(deftest test-sum-cubes
+  (testing "Sum of cube of digits"
+    (is (= 36 (sum-cubes 123)))))
